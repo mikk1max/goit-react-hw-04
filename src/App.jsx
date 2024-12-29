@@ -5,6 +5,8 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import toast from "react-hot-toast";
 import ImageModal from "./components/ImageModal/ImageModal";
 import Loader from "./components/Loader/Loader";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -56,6 +58,12 @@ function App() {
 
   const handleSearch = async (inputValue) => {
     setSearchQuery(inputValue);
+
+    if (inputValue === "") {
+      setIsError(true);
+      toast.error("Please write something to find!");
+    }
+
     setImages([]);
     setPage(1);
   };
@@ -73,23 +81,12 @@ function App() {
   return (
     <>
       <SearchBar onSearch={handleSearch} page={page} />
-      {!isError && <ImageGallery images={images} openModal={openModal} />}
-      {!isError && allPages > page && (
-        <button
-          type="button"
-          style={{
-            display: "block",
-            margin: "20px auto",
-            borderRadius: "8px",
-            border: "none",
-            padding: 20,
-            textAlign: "center",
-          }}
-          onClick={() => setPage((prev) => prev + 1)}
-        >
-          Load more
-        </button>
+      {!isError ? (
+        <ImageGallery images={images} openModal={openModal} />
+      ) : (
+        <ErrorMessage />
       )}
+      {!isError && allPages > page && <LoadMoreBtn loadNextPage={setPage} />}
       {isLoading && <Loader />}
       {isModalOpen && (
         <ImageModal

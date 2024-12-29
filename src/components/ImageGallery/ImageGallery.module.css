@@ -1,6 +1,6 @@
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   grid-auto-rows: auto;
   grid-auto-flow: dense;
   gap: 1rem;
