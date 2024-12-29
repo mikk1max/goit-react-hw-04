@@ -1,7 +1,6 @@
 import ReactModal from "react-modal";
 import { FaHeart } from "react-icons/fa";
 import s from "./ImageModal.module.css";
-import { useEffect } from "react";
 
 ReactModal.setAppElement("#root");
 
