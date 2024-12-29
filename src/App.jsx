@@ -75,7 +75,18 @@ function App() {
       <SearchBar onSearch={handleSearch} page={page} />
       {!isError && <ImageGallery images={images} openModal={openModal} />}
       {!isError && allPages > page && (
-        <button type="button" onClick={() => setPage((prev) => prev + 1)}>
+        <button
+          type="button"
+          style={{
+            display: "block",
+            margin: "20px auto",
+            borderRadius: "8px",
+            border: "none",
+            padding: 20,
+            textAlign: "center",
+          }}
+          onClick={() => setPage((prev) => prev + 1)}
+        >
           Load more
         </button>
       )}
