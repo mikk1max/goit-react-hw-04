@@ -1,5 +1,4 @@
 .modalImage {
-  max-width: 100%;
   max-height: 80vh;
   height: auto;
   display: block;
@@ -14,11 +13,8 @@
 .boxInfo {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background-color: black;
-  opacity: 0.85;
   color: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }

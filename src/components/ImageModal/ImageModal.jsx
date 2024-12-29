@@ -12,7 +12,7 @@ const ImageModal = ({ isOpen, selectedImage, closeModal }) => {
       contentLabel="Image Modal"
       style={{
         overlay: {
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
@@ -29,8 +29,9 @@ const ImageModal = ({ isOpen, selectedImage, closeModal }) => {
           maxHeight: "90vh",
           margin: 0,
           overflow: "hidden",
-          backgroundColor: "transparent",
           inset: "auto",
+          backgroundImage: "url(/public/png-back.jpeg)",
+          backgroundSize: "cover",
         },
       }}
     >
@@ -40,18 +41,44 @@ const ImageModal = ({ isOpen, selectedImage, closeModal }) => {
         className={s.modalImage}
       />
       <div className={s.boxInfo}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <img
-            src={selectedImage.user.profile_image.small}
-            alt={selectedImage.user.name + " profile image"}
-            className={s.profileImage}
-          />
-          <p>{selectedImage.user.name}</p>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+
+            width: "90%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={selectedImage.user.profile_image.small}
+              alt={selectedImage.user.name + " profile image"}
+              className={s.profileImage}
+            />
+            <p>{selectedImage.user.name}</p>
+          </div>
+          <p style={{ display: "flex", alignItems: "center" }}>
+            <FaHeart style={{ color: "red", marginRight: "5px" }} />
+            {selectedImage.likes}
+          </p>
         </div>
-        <p>{selectedImage.alt_description}</p>
-        <p>
-          <FaHeart style={{ color: "red", marginRight: "5px" }} />
-          {selectedImage.likes}
+        <p
+          style={{
+            paddingRight: "2rem",
+            paddingLeft: "2rem",
+            width: "calc(100% - 4rem)",
+            backgroundColor: "white",
+            color: "black",
+            fontSize: "1.5rem",
+          }}
+        >
+          {selectedImage.alt_description}
         </p>
       </div>
     </ReactModal>
